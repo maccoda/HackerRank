@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algorithms.ServiceLane;
+import algorithms.implementations.ServiceLane;
 
 public class ServiceLane_Test {
 

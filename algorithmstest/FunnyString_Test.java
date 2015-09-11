@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import algorithms.FunnyString;
+import algorithms.strings.FunnyString;
 
 public class FunnyString_Test {
 

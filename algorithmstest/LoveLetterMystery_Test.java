@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algorithms.TheLoveLetterMystery;
+import algorithms.strings.TheLoveLetterMystery;
 
 public class LoveLetterMystery_Test {
 

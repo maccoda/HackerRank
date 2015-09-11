@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 import org.junit.Test;
 
-import algorithms.IceCreamPalor;
+import algorithms.search.IceCreamPalor;
 
 public class IceCreamPalor_Test {
 
@@ -20,6 +20,7 @@ public class IceCreamPalor_Test {
         File homeDir = new File(System.getProperty("user.home"));
         File inputFile = new File(homeDir, "iceCreamTest.txt");
         File outputFile = new File(homeDir, "iceCreamOutput.txt");
+        System.out.println(inputFile.getAbsolutePath());
         // Add them to the scanners
         Scanner input = null;
         Scanner output = null;

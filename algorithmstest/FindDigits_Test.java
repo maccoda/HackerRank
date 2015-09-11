@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algorithms.FindDigits;
+import algorithms.implementations.FindDigits;
 
 public class FindDigits_Test {
 
