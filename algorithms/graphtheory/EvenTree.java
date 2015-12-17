@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.graphtheory;
 
 import java.util.ArrayList;
 import java.util.Scanner;

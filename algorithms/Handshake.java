@@ -16,6 +16,7 @@ public class Handshake {
 
     }
 
+    
     public static long handshake(int people) {
         // This problem looks like factorial so will have fun with recursion
 
