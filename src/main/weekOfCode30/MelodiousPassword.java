@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.Iterator;
 
@@ -12,7 +13,7 @@ interface NewIterator {
 
 public class MelodiousPassword {
 
-    class VowelIter implements NewIterator {
+    static class VowelIter implements NewIterator {
         List<Character> vowels = Arrays.asList('a', 'e', 'i', 'o', 'u');
         Iterator<Character> iter;
 
@@ -33,7 +34,7 @@ public class MelodiousPassword {
         }
     }
 
-    class ConsonantIter implements NewIterator {
+    static class ConsonantIter implements NewIterator {
         List<Character> consonants = Arrays.asList('b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r',
                 's', 't', 'v', 'w', 'x', 'z');
 
@@ -56,17 +57,17 @@ public class MelodiousPassword {
         }
     }
 
-    interface PasswordGenerator {
+    static interface PasswordGenerator {
         public Optional<String> next();
     }
 
-    class VowelPasswordGenerator implements PasswordGenerator {
+    static class VowelPasswordGenerator implements PasswordGenerator {
         private List<NewIterator> chars;
         // Should really have a current word
         private char[] word;
 
         public VowelPasswordGenerator(int length) {
-
+            chars = new ArrayList<>();
             for (int i = 0; i < length; i++) {
                 if (i % 2 == 0) {
                     chars.add(new VowelIter());
@@ -92,7 +93,7 @@ public class MelodiousPassword {
                 int index = chars.size() - 1;
                 while (index >= 0) {
                     Optional<Character> result = chars.get(index).next();
-                    if (result.isPresent()) {
+                    if (!result.isPresent()) {
                         chars.get(index).restart();
                         index--;
                     } else {
@@ -107,11 +108,12 @@ public class MelodiousPassword {
         }
     }
 
-    class ConsonantPasswordGenerator implements PasswordGenerator {
+    static class ConsonantPasswordGenerator implements PasswordGenerator {
         private List<NewIterator> chars;
         private char[] word;
 
         public ConsonantPasswordGenerator(int length) {
+            chars = new ArrayList<>();
             for (int i = 0; i < length; i++) {
                 if (i % 2 == 0) {
                     chars.add(new ConsonantIter());
@@ -137,7 +139,7 @@ public class MelodiousPassword {
                 int index = chars.size() - 1;
                 while (index >= 0) {
                     Optional<Character> result = chars.get(index).next();
-                    if (result.isPresent()) {
+                    if (!result.isPresent()) {
                         chars.get(index).restart();
                         index--;
                     } else {
@@ -155,14 +157,20 @@ public class MelodiousPassword {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
+        melodiousPassword(n);
     }
 
     private static void melodiousPassword(int length) {
-        // First calculate how many of each we need
-        boolean isOdd = length % 2 == 0 ? true : false;
-        int numEach = length / 2;
         // Look at all possibilities starting with consonant
-
+        ConsonantPasswordGenerator cGen = new ConsonantPasswordGenerator(length);
+        Optional<String> nextWord;
+        while ((nextWord = cGen.next()).isPresent()) {
+            System.out.println(nextWord.get());
+        }
         // Look at all possibilities starting with vowels
+        VowelPasswordGenerator vGen = new VowelPasswordGenerator(length);
+        while ((nextWord = vGen.next()).isPresent()) {
+            System.out.println(nextWord.get());
+        }
     }
 }

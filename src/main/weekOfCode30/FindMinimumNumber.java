@@ -15,13 +15,14 @@ public class FindMinimumNumber {
         System.out.println(builder.toString());
     }
 
-    private static String createFunctionCall(int numInput) {
+    private static void createFunctionCall(int numInput) {
         // Best way to do this is by recursion
         if (numInput == 2) {
             builder.append("min(int, int)");
         } else {
             builder.append("min(int, ");
             createFunctionCall(numInput - 1);
+            builder.append(")");
         }
 
     }
