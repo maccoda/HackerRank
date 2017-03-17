@@ -7,7 +7,7 @@ import java.util.regex.*;
 /**
  * CandayReplenishingRobot
  */
-public class CandayReplenishingRobot {
+public class CandyReplenishingRobot {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
